@@ -1,5 +1,7 @@
-const { ethers } = require("ethers");
-const provider = new ethers.providers.JsonRpcProvider(
+const { ethers, formatEther, parseEther } = require("ethers");
+
+const provider = new ethers.JsonRpcProvider(                // v6
+// const provider = new ethers.providers.JsonRpcProvider(   // v5
   `Enter You INFURA mainnet endpoint`
 );
 
@@ -12,10 +14,12 @@ const querryBlockchain = async () => {
   );
   console.log("Account Balance In BN:", balance);
 
-  const balanceEther = ethers.utils.formatEther(balance);
+  const balanceEther = formatEther(balance);                  // v6
+  // const balanceEther = ethers.utils.formatEther(balance);  // v5
   console.log("Account Balance In Ether:", balanceEther);
 
-  const balanceWei = ethers.utils.parseEther(balanceEther);
+  const balanceWei = parseEther(balanceEther);                  // v6
+  // const balanceWei = ethers.utils.parseEther(balanceEther);  // v5
   console.log(balanceWei);
 };
 querryBlockchain();
